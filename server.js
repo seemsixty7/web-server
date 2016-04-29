@@ -8,8 +8,8 @@ var middleware = {
         next();
     },
     logger: function(req,res, next){
-        var timestamp = new Date().toString();
-        console.log('Request:[' + timestamp + ']: ' + req.method + ' ' + req.originalUrl);
+        //var timestamp = new Date().toString();
+        console.log('Request:[' + new Date().toString() + ']: ' + req.method + ' ' + req.originalUrl);
         next();
     } 
 };
@@ -18,7 +18,7 @@ var middleware = {
 app.use(middleware.logger);
 
 app.get('/about', middleware.requireAuthentication, function(req,res){
-    res.send('About us');
+    res.send('About Us!');
 });
 
 app.use(express.static(__dirname + '/public')); //exposes entire directory
